@@ -1,7 +1,7 @@
 from datetime import datetime
 from app import db
 
-class Achivements(db.Model):
+class Achievements(db.Model):
 
     # Table for Achievements
     __tablename__ = "tbl_achievements" # Table name
