@@ -14,5 +14,5 @@ class Users(db.Model):
     user_email = db.Column(db.String(200), nullable=False, unique=True)
     user_password = db.Column(db.String(200), nullable=False)
     user_role = db.Column(db.String(50))
-    user_badges = db.Column(db.String(), db.ForeignKey("tbl_roles.role_id"))
+    user_badges = db.Column(db.Integer, nullable=False, default=0)
     user_created_at = db.Column(db.DateTime, default=datetime.now())
