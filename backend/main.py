@@ -6,6 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 db = database.db(app)
 
+# ------------------------------------------------------------------------------------------
 # Database Schema
 
 class Users(db.Model):
@@ -19,6 +20,8 @@ class Users(db.Model):
     role = db.Column(db.String(50), nullable=False)
     badges = db.Column(db.String(50))
     created_at = db.Column(db.DateTime, default=datetime.now())
+
+# ------------------------------------------------------------------------------------------
 
 @app.route("/", methods=["POST", "GET"])
 def index():
