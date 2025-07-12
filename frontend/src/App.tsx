@@ -5,6 +5,7 @@ import Home from './components/landing/home';
 import Dashboard from './pages/dashboard/dashboard';
 import Challenges from './components/landing/challenges';
 import Contest from './components/landing/contest';
+import Team from './components/landing/team';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,6 +26,7 @@ function App() {
                 <Home />
                 <Challenges />
                 <Contest />
+                <Team />
               </div>
             </div>
           }
