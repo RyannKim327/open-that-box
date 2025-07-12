@@ -1,3 +1,6 @@
+import base64
+import json
+
 from app import db
 from schema.users import Users
 from sqlalchemy import and_, or_
@@ -21,10 +24,15 @@ def login(request):
             )
         )
 
-        print(user.user_username)
+        # print(user.user_username)
         if user:
-            return {"id": user.user_id, "usn": user.user_username}
+            return {
+                "id": user.user_id,
+                "usn": user.user_username,
+                "token": base64.b64decode(user.user_username),
+            }
+
         else:
             return {"error": "Invalid Credentials"}
     except Exception as e:
-        return {"error": str(e)}
+        return {"error": "Err: " + str(e)}

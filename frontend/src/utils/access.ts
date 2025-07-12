@@ -38,6 +38,11 @@ export async function post(endpoint: string, params: unknown) {
   if (!endpoint.startsWith("/")) {
     endpoint = `/${endpoint}`;
   }
-  const { data } = await axios.post(`${url}${endpoint}`, params);
+  const { data } = await axios.post(`${url}${endpoint}`, params, {
+    headers: {
+
+      "Content-Type": "application/json",
+    },
+  });
   return data;
 }
