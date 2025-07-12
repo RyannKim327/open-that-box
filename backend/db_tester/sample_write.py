@@ -39,3 +39,5 @@ def sample_write():
         role_name = "Sample Role",
         role_description = "I have no description..."
     ))
+
+    return "Insertion successful!"

@@ -1,59 +1,20 @@
 from app import app, db
 from flask import request
-from schema.users import Users
-from schema.achivements import Achivements
-from schema.badge import Badge
-from schema.roles import Roles
 from web.top_contrib import top_contributor
-from web.register import define_register
+from web.register import register
+from db_tester.sample_write import sample_write
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-
-    def insert(content):
-        try :
-            db.session.add(content)
-            db.session.commit()
-        except Exception as error:
-            return f"Unable to insert: {error}"
-    
-    insert(Users(
-        user_username = "khianvictory", 
-        user_first_name = "Khian Victory",
-        user_middle_name = "Dela Pena",
-        user_last_name = "Calderon",
-        user_email = "asfmak@mgasmkfa.com",
-        user_password = "123",
-        user_role = 1,
-        user_badges = "70"
-    ))
-
-    insert(Badge(
-        badge_name = "Sa kaniya lang",
-        badge_description = "Ako ay para sa kaniya lamang",
-        badge_level_points = "[10, 10, 50, 20]",
-        badge_category = "Single"
-    ))
-
-    insert(Achivements(
-        user_id=1,
-        badge_id=1
-    ))
-
-    insert(Roles(
-        role_name = "Sample Role",
-        role_description = "I have no description..."
-    ))
-
-    return "No insertion error."    
-
+    return ""
 
 @app.route("/api/top-contributors")
 def top_contribs():
     return top_contributor(request)
 
-# The registration route /api/register
-define_register()
+@app.route("/api/register", methods=["POST"])
+def register_page():
+    return register()
 
 if __name__ == "__main__":
     with app.app_context():
