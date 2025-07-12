@@ -1,10 +1,7 @@
-import database
-from flask import Flask, request
+from flask import request
 from web.top_contrib import top_contributor
 from datetime import datetime
-
-app = Flask(__name__)
-db = database.db(app)
+from app import app, db
 
 # ------------------------------------------------------------------------------------------
 # Database Schema
