@@ -40,6 +40,7 @@ const data = {
       title: "Dashboard",
       url: "#",
       icon: IconDashboard,
+      isActive: true,
     },
     {
       title: "Challenges",
