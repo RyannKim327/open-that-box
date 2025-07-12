@@ -109,7 +109,7 @@ function Header({ onLoginSuccess }: { onLoginSuccess: () => void }) {
                     </button>
                 </header>
                     {isMobileMenuOpen && (
-                    <div className="absolute top-full left-0 right-0 bg-white shadow-lg border-t md:hidden z-50">
+                    <div className="absolute top-full left-0 right-0 bg-white rounded-3xl text-center shadow-lg border-t md:hidden z-50">
                         <nav className="flex flex-col p-4">
                             <ul className="flex flex-col space-y-4 text-black font-semibold mb-4">
                                 <li>
