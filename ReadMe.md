@@ -1,9 +1,13 @@
-<h3 align="center">OpenIT Competition</h3>
+<h3 align="center">Acude</h3>
 <h4 align="center">Khian Victory Calceron, Rogemson Molina, Ryann Kim Sesgundo</h4>
 
 ---
 
 ### Introduction
+> Acude is a web system that helps each individual to monitor their activies by achieving or completing tasks.
+The points they earn are based on the task they accomplished, the harder task they got, the more point they have.
+Badges are also based on their points too.
+Acude is not just for individual performance monitoring, but also by teams, to motivate each everyone to collaborate with each task.
 
 ---
 
