@@ -6,7 +6,7 @@ export async function getAuthenticated(endpoint: string) {
   if (!endpoint.startsWith("/")) {
     endpoint = `/${endpoint}`;
   }
-  const { data } = await axios.get(endpoint, {
+  const { data } = await axios.get(`${url}${endpoint}`, {
     headers: {
       token: localStorage.getItem("token"),
     },
@@ -18,7 +18,7 @@ export async function postAuthenticate(endpoint: string, params: unknown) {
   if (!endpoint.startsWith("/")) {
     endpoint = `/${endpoint}`;
   }
-  const { data } = await axios.post(endpoint, params, {
+  const { data } = await axios.post(`${url}${endpoint}`, params, {
     headers: {
       token: localStorage.getItem("token"),
     },
@@ -30,7 +30,7 @@ export async function get(endpoint: string) {
   if (!endpoint.startsWith("/")) {
     endpoint = `/${endpoint}`;
   }
-  const { data } = await axios.get(endpoint);
+  const { data } = await axios.get(`${url}${endpoint}`);
   return data;
 }
 
@@ -38,6 +38,6 @@ export async function post(endpoint: string, params: unknown) {
   if (!endpoint.startsWith("/")) {
     endpoint = `/${endpoint}`;
   }
-  const { data } = await axios.post(endpoint, params);
+  const { data } = await axios.post(`${url}${endpoint}`, params);
   return data;
 }
