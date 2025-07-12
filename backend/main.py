@@ -1,10 +1,7 @@
-from datetime import datetime
-
 from app import app, db
 from flask import request
 from schema.users import Users
 from web.top_contrib import top_contributor
-
 
 @app.route("/", methods=["POST", "GET"])
 def index():

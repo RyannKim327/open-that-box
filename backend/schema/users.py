@@ -1,9 +1,5 @@
 from datetime import datetime
-
-from app import app, db
-
-# from database import db
-
+from app import db
 
 class Users(db.Model):
     # Table for Users
