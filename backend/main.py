@@ -6,6 +6,7 @@ from schema.badge import Badge
 from schema.roles import Roles
 from schema.users import Users
 from web.login import login
+from web.register import register
 from web.top_contrib import top_contributor
 
 CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -53,6 +54,9 @@ def index():
 def api_login():
     return login(request)
 
+@app.route("/api/register", methods=["POST"])
+def api_register():
+    return register(request)
 
 @app.route("/api/top-contributors")
 def top_contribs():
