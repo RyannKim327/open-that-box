@@ -4,7 +4,11 @@ import LoginPage from "@/pages/login/login-page";
 import SignupPage from "@/pages/signup/signup-page";
 import { Button } from "../ui/button";
 
-function Header({ onLoginSuccess = () => {} }: { onLoginSuccess?: () => void }) {
+function Header({
+    onLoginSuccess = () => { },
+}: {
+    onLoginSuccess?: () => void;
+}) {
     const [showLogin, setShowLogin] = useState(false);
     const [showSignup, setShowSignup] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,7 +19,7 @@ function Header({ onLoginSuccess = () => {} }: { onLoginSuccess?: () => void }) 
     const handleLoginSuccess = () => {
         setShowLogin(false);
         onLoginSuccess();
-        useNavigate; 
+        useNavigate;
     };
 
     const handleSignupSuccess = () => {
@@ -24,11 +28,14 @@ function Header({ onLoginSuccess = () => {} }: { onLoginSuccess?: () => void }) 
         useNavigate;
     };
 
-    const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    const handleSmoothScroll = (
+        e: React.MouseEvent<HTMLAnchorElement>,
+        sectionId: string,
+    ) => {
         e.preventDefault();
         const section = document.getElementById(sectionId);
         if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+            section.scrollIntoView({ behavior: "smooth" });
         }
         setIsMobileMenuOpen(false);
     };
@@ -47,37 +54,37 @@ function Header({ onLoginSuccess = () => {} }: { onLoginSuccess?: () => void }) 
                 <nav className="hidden lg:flex items-center space-x-6">
                     <ul className="flex space-x-6 text-black font-semibold">
                         <li>
-                            <a 
-                                href="#home" 
+                            <a
+                                href="#home"
                                 className="hover:text-gray-600 transition-colors"
-                                onClick={e => handleSmoothScroll(e, "home")}
+                                onClick={(e) => handleSmoothScroll(e, "home")}
                             >
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a 
-                                href="#leaderboard" 
+                            <a
+                                href="#leaderboard"
                                 className="hover:text-gray-600 transition-colors"
-                                onClick={e => handleSmoothScroll(e, "leaderboard")}
+                                onClick={(e) => handleSmoothScroll(e, "leaderboard")}
                             >
                                 Leaderboards
                             </a>
                         </li>
                         <li>
-                            <a 
+                            <a
                                 href="#challenges"
                                 className="hover:text-gray-600 transition-colors"
-                                onClick={e => handleSmoothScroll(e, "challenges")}
+                                onClick={(e) => handleSmoothScroll(e, "challenges")}
                             >
                                 Challenges
                             </a>
                         </li>
                         <li>
-                            <a 
+                            <a
                                 href="#contest"
                                 className="hover:text-gray-600 transition-colors"
-                                onClick={e => handleSmoothScroll(e, "contest")}
+                                onClick={(e) => handleSmoothScroll(e, "contest")}
                             >
                                 Contest
                             </a>
@@ -107,9 +114,15 @@ function Header({ onLoginSuccess = () => {} }: { onLoginSuccess?: () => void }) 
                     onClick={toggleMobileMenu}
                     aria-label="Toggle mobile menu"
                 >
-                    <span className={`block w-6 h-0.5 bg-black transition-transform ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                    <span className={`block w-6 h-0.5 bg-black transition-opacity ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                    <span className={`block w-6 h-0.5 bg-black transition-transform ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                    <span
+                        className={`block w-6 h-0.5 bg-black transition-transform ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}
+                    ></span>
+                    <span
+                        className={`block w-6 h-0.5 bg-black transition-opacity ${isMobileMenuOpen ? "opacity-0" : ""}`}
+                    ></span>
+                    <span
+                        className={`block w-6 h-0.5 bg-black transition-transform ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+                    ></span>
                 </button>
             </header>
             {isMobileMenuOpen && (
@@ -117,43 +130,43 @@ function Header({ onLoginSuccess = () => {} }: { onLoginSuccess?: () => void }) 
                     <nav className="px-4 py-4">
                         <ul className="space-y-4 text-black font-semibold">
                             <li>
-                                <a 
-                                    href="#home" 
+                                <a
+                                    href="#home"
                                     className="block hover:text-gray-600 transition-colors py-2"
-                                    onClick={e => handleSmoothScroll(e, "home")}
+                                    onClick={(e) => handleSmoothScroll(e, "home")}
                                 >
                                     Home
                                 </a>
                             </li>
                             <li>
-                                <a 
-                                    href="#leaderboard" 
+                                <a
+                                    href="#leaderboard"
                                     className="block hover:text-gray-600 transition-colors py-2"
-                                    onClick={e => handleSmoothScroll(e, "leaderboard")}
+                                    onClick={(e) => handleSmoothScroll(e, "leaderboard")}
                                 >
                                     Leaderboards
                                 </a>
                             </li>
                             <li>
-                                <a 
+                                <a
                                     href="#challenges"
                                     className="block hover:text-gray-600 transition-colors py-2"
-                                    onClick={e => handleSmoothScroll(e, "challenges")}
+                                    onClick={(e) => handleSmoothScroll(e, "challenges")}
                                 >
                                     Challenges
                                 </a>
                             </li>
                             <li>
-                                <a 
+                                <a
                                     href="#contest"
                                     className="block hover:text-gray-600 transition-colors py-2"
-                                    onClick={e => handleSmoothScroll(e, "contest")}
+                                    onClick={(e) => handleSmoothScroll(e, "contest")}
                                 >
                                     Contest
                                 </a>
                             </li>
                         </ul>
-                        
+
                         {/* Mobile Auth Buttons */}
                         <div className="mt-6 space-y-3 sm:hidden">
                             <Button
@@ -175,10 +188,10 @@ function Header({ onLoginSuccess = () => {} }: { onLoginSuccess?: () => void }) 
                 </div>
             )}
             {showLogin && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-                    <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
-                        <LoginPage onLoginSuccess={handleLoginSuccess} />
-                    </div>
+                <div className="fixed flex inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+                    {/* <div className="bg-white rounded-lg p-6 w-full content-border max-h-[90vh] overflow-y-auto"> */}
+                    <LoginPage onLoginSuccess={handleLoginSuccess} />
+                    {/* </div> */}
                 </div>
             )}
             {showSignup && (
