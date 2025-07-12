@@ -1,17 +1,26 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LoginPage from "@/pages/login-page";
+import LoginPage from "@/pages/login/login-page";
+import SignupPage from "@/pages/signup/signup-page"; // Updated import
 import { Button } from "../ui/button";
 
 function Header({ onLoginSuccess }: { onLoginSuccess: () => void }) {
     const [showLogin, setShowLogin] = useState(false);
+    const [showSignup, setShowSignup] = useState(false);
     const navigate = useNavigate();
 
     const openLoginDialog = () => setShowLogin(true);
+    const openSignupDialog = () => setShowSignup(true);
 
     const handleLoginSuccess = () => {
         setShowLogin(false);
         onLoginSuccess();
+        navigate('/dashboard');
+    };
+
+    const handleSignupSuccess = () => {
+        setShowSignup(false);
+        onLoginSuccess(); // Use the same callback since both should trigger login success
         navigate('/dashboard');
     };
 
@@ -88,7 +97,7 @@ function Header({ onLoginSuccess }: { onLoginSuccess: () => void }) {
                         Login
                     </Button>
                     <Button
-                        onClick={openLoginDialog}
+                        onClick={openSignupDialog}
                         variant="default"
                     >
                         Create Account
@@ -97,8 +106,14 @@ function Header({ onLoginSuccess }: { onLoginSuccess: () => void }) {
                 {showLogin && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
                         <div className="rounded-lg p-6 mx-auto my-8">
-                           
                             <LoginPage onLoginSuccess={handleLoginSuccess} />
+                        </div>
+                    </div>
+                )}
+                {showSignup && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+                        <div className="rounded-lg p-6 mx-auto my-8">
+                            <SignupPage onSignUpSuccess={handleSignupSuccess} />
                         </div>
                     </div>
                 )}
