@@ -4,7 +4,7 @@ import './App.css'
 
 function App() {
   return (
-    <div className="App max-w-screen mx-auto justify-center items-center h-screen w-screen p-8 overflow-hidden">
+    <div className="App max-w-screen mx-auto justify-center items-center h-screen w-screen p-8 overflow-x-hidden">
       <Header />
       <Home />
     </div>
