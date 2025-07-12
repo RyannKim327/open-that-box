@@ -21,6 +21,8 @@ def index():
         user_first_name = "Khian Victory",
         user_middle_name = "Dela Pena",
         user_last_name = "Calderon",
+        user_email = "asfmak@mgasmkfa.com",
+        user_password = "123",
         user_role = 1,
         user_badges = "70"
     ))
@@ -45,10 +47,20 @@ def index():
     return "No insertion error."    
 
 
-@app.route("/top-contributors")
+@app.route("/api/top-contributors")
 def top_contribs():
     return top_contributor(request)
 
+@app.route("/api/user", methods=["POST"])
+def get_user():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    if username == "khian" and password == "123":
+        return "Access granted"
+    else:
+        return "Invalid username or password"
 
 if __name__ == "__main__":
     with app.app_context():
