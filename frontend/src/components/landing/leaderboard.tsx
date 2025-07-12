@@ -13,7 +13,7 @@ import { Label } from "../ui/label"
 
 export default function LeaderboardPage() {
   return (
-    <div className="container mx-auto px-4 py-8 justify-center items-center">
+    <div id="leaderboard" className="leaderboard container mx-auto px-4 py-8 justify-center items-center">
         <div className="text-center mb-8 max-h-60 flex justify-between items-center p-4 border-b pb-9">
             <div className="flex justify-center space-x-4 flex-col text-left max-w-3xl">
                 <h3 className="text-2xl font-bold">Jemson</h3>
