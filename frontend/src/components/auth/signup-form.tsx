@@ -6,11 +6,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "../ui/button"
 
-export function AnimatedLoginForm({
+export function SignupForm({
   className,
-  onLoginSuccess,
+  onSignUpSuccess,
   ...props
-}: React.ComponentProps<"div"> & { onLoginSuccess?: () => void }) {
+}: React.ComponentProps<"div"> & { onSignUpSuccess?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
@@ -136,14 +136,14 @@ export function AnimatedLoginForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-        gsap.to(cardRef.current, {
+    gsap.to(cardRef.current, {
       scale: 0.98,
       duration: 0.1,
       yoyo: true,
       repeat: 1,
       ease: "power2.inOut",
       onComplete: () => {
-        onLoginSuccess?.()
+        onSignUpSuccess?.()
       }
     })
   }
@@ -158,13 +158,38 @@ export function AnimatedLoginForm({
           >
             <div className="flex flex-col gap-6">
               <div ref={headerRef} className="flex flex-col items-center text-center">
-                <h2 className="text-2xl font-bold">Welcome back</h2>
+                <h2 className="text-2xl font-bold">Create an account</h2>
                 <p className="text-muted-foreground text-balance">
-                  Login to your Acude account
+                  Join Acude where quantity meets quality
                 </p>
               </div>
               
               <div ref={formFieldsRef} className="flex flex-col gap-6">
+                <div className="grid gap-3 md:grid-cols-2">
+                  <div className="grid gap-3">
+                    <Label htmlFor="firstName">First Name</Label>
+                    <Input
+                      id="firstName"
+                      type="text"
+                      placeholder="John"
+                      required
+                      onFocus={handleInputFocus}
+                      onBlur={handleInputBlur}
+                    />
+                  </div>
+                  <div className="grid gap-3">
+                    <Label htmlFor="lastName">Last Name</Label>
+                    <Input
+                      id="lastName"
+                      type="text"
+                      placeholder="Doe"
+                      required
+                      onFocus={handleInputFocus}
+                      onBlur={handleInputBlur}
+                    />
+                  </div>
+                </div>
+
                 <div className="grid gap-3">
                   <Label htmlFor="email">Email</Label>
                   <Input
@@ -176,31 +201,38 @@ export function AnimatedLoginForm({
                     onBlur={handleInputBlur}
                   />
                 </div>
+
                 <div className="grid gap-3">
-                  <div className="flex items-center">
-                    <Label htmlFor="password">Password</Label>
-                    <a
-                      href="#"
-                      className="ml-auto text-sm underline-offset-2 hover:underline transition-colors"
-                    >
-                      Forgot your password?
-                    </a>
-                  </div>
+                  <Label htmlFor="password">Password</Label>
                   <Input 
                     id="password" 
                     type="password" 
+                    placeholder="Create a strong password"
                     required 
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                   />
                 </div>
+
+                <div className="grid gap-3">
+                  <Label htmlFor="confirmPassword">Confirm Password</Label>
+                  <Input 
+                    id="confirmPassword" 
+                    type="password" 
+                    placeholder="Confirm your password"
+                    required 
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
+                  />
+                </div>
+
                 <Button 
                   type="submit" 
                   className="w-full"
                   onMouseEnter={handleButtonHover}
                   onMouseLeave={handleButtonLeave}
                 >
-                  Login
+                  Create Account
                 </Button>
               </div>
 
@@ -210,6 +242,7 @@ export function AnimatedLoginForm({
                     Or continue with
                   </span>
                 </div>
+                
                 <div className="grid grid-cols-3 gap-4">
                   <Button 
                     variant="outline" 
@@ -260,10 +293,11 @@ export function AnimatedLoginForm({
                     <span className="sr-only">GitHub</span>
                   </Button>
                 </div>
+                
                 <div className="text-center text-sm">
-                  Don&apos;t have an account?{" "}
+                  Already have an account?{" "}
                   <a href="#" className="underline underline-offset-4 hover:text-primary transition-colors">
-                    Sign up
+                    Sign in
                   </a>
                 </div>
               </div>
