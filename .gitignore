@@ -1,0 +1,5 @@
+# INFO: Frontend
+node_modules
+
+#INFO: backend
+venv
