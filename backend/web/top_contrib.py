@@ -13,4 +13,4 @@ def top_contributor(request):
             "Points": item[1]
         })
 
-    return str(data)
+    return data
