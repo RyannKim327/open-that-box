@@ -1,15 +1,10 @@
-from app import app, db
-from flask import request
 from schema.users import Users
 from schema.achivements import Achivements
 from schema.badge import Badge
 from schema.roles import Roles
-from web.top_contrib import top_contributor
-from web.register import define_register
+from app import db
 
-@app.route("/", methods=["POST", "GET"])
-def index():
-
+def sample_write():
     def insert(content):
         try :
             db.session.add(content)
@@ -44,18 +39,3 @@ def index():
         role_name = "Sample Role",
         role_description = "I have no description..."
     ))
-
-    return "No insertion error."    
-
-
-@app.route("/api/top-contributors")
-def top_contribs():
-    return top_contributor(request)
-
-# The registration route /api/register
-define_register()
-
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()  # Create initial table
-    app.run(debug=True)
