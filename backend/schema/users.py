@@ -5,11 +5,6 @@ from app import app, db
 # from database import db
 
 
-def setApp(myapp):
-    global app
-    app = myapp
-
-
 class Users(db.Model):
     # Table for Users
     __tablename__ = "users"
