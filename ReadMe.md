@@ -49,7 +49,10 @@ npm create vite@latest frontend
 
 ### Installation
 
-> Please note that you need first to install the virtual environment into the system. `pip install virtualenv` for `Windows` and `sudo pacman -S python-virtualend`. Then you may now proceed to install other dependencies.
+> Please note that you need first to install the virtual environment into the system
+`pip install virtualenv` for `Windows` or `sudo pacman -S python-virtualenv`.
+Then activate it using `python -m venv venv`. To deactivate, just execute `deactivate`.
+Then you may now proceed to install other dependencies.
 
 ```bash
 # INFO: For backend dependencies
