@@ -1,6 +1,5 @@
 import Header from './components/landing/header'
 import Home from './components/landing/home'
-import './App.css'
 import LeaderboardPage from './components/landing/leaderboard'
 
 function App() {

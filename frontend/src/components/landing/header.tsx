@@ -19,24 +19,24 @@ function Header() {
                 <h2 className="text-3xl font-bold text-black mr-9">Acude.</h2>
                 <div className="flex justify-center items-center">
                     <nav className="flex items-center space-x-4">
-                        <ul className="flex space-x-4 gap-2">
-                            <li><a href="/" className="hover:underline">Home</a></li>
-                            <li><a href="/leaderboard" className="hover:underline">Leaderboards</a></li>
-                            <li><a href="/courses" className="hover:underline">Courses</a></li>
-                            <li><a href="/contest" className="hover:underline">Contest</a></li>
-                            <li><a href="/educators" className="hover:underline">Educators</a></li>
-                            <li><a href="/scholarships" className="hover:underline">Scholarships</a></li>
+                        <ul className="flex space-x-4 gap-2 text-black font-semibold">
+                            <li><a href="/" className="">Home</a></li>
+                            <li><a href="/leaderboard" className="">Leaderboards</a></li>
+                            <li><a href="/courses" className="">Courses</a></li>
+                            <li><a href="/contest" className="">Contest</a></li>
+                            <li><a href="/educators" className="">Educators</a></li>
+                            <li><a href="/scholarships" className="">Scholarships</a></li>
                         </ul>
                     </nav>
-                    <div className="flex items-center ml-8 justify-center">
+                    <div className="flex items-center ml-8 justify-center gap-2">
                         <Button
                             onClick={openLoginDialog}
-                            variant={"outline"}
                         >
                             Login
                         </Button>
                         <Button
                             onClick={openLoginDialog}
+                            variant={"outline"}
                         >
                             Create Account
                         </Button>
