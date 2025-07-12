@@ -3,6 +3,7 @@ from flask import request
 from schema.users import Users
 from schema.achivements import Achivements
 from schema.badge import Badge
+from schema.roles import Roles
 from web.top_contrib import top_contributor
 
 @app.route("/", methods=["POST", "GET"])
@@ -20,7 +21,7 @@ def index():
         user_first_name = "Khian Victory",
         user_middle_name = "Dela Pena",
         user_last_name = "Calderon",
-        user_role = "Member",
+        user_role = 1,
         user_badges = "70"
     ))
 
@@ -36,7 +37,12 @@ def index():
         badge_id=1
     ))
 
-    return "Hello World"    
+    insert(Roles(
+        role_name = "Sample Role",
+        role_description = "I have no description..."
+    ))
+
+    return "No insertion error."    
 
 
 @app.route("/top-contributors")
