@@ -1,7 +1,10 @@
 from schema.users import Users
-from schema.achivements import Achivements
+from schema.achievements import Achievements
 from schema.badge import Badge
 from schema.roles import Roles
+from schema.tasks import Tasks
+from schema.task_done import Tasks_Done
+from schema.team_achievements import Team_Achievements
 from app import db
 
 def sample_write():
@@ -30,7 +33,7 @@ def sample_write():
         badge_category = "Single"
     ))
 
-    insert(Achivements(
+    insert(Achievements(
         user_id=1,
         badge_id=1
     ))
@@ -38,6 +41,23 @@ def sample_write():
     insert(Roles(
         role_name = "Sample Role",
         role_description = "I have no description..."
+    ))
+
+    insert(Tasks(
+        task_id=1,
+        user_id=1
+    ))
+
+    insert(Tasks_Done(
+        task_name="My Task",
+        task_description="Eh eh...",
+        task_points=0,
+        task_by_group=False
+    ))
+
+    insert(Team_Achievements(
+        role=1,
+        badge_id=1
     ))
 
     return "Insertion successful!"
