@@ -1,5 +1,10 @@
 # INFO: Frontend
 node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
 
 #INFO: backend
+__pycache__
 venv
