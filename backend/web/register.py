@@ -1,6 +1,6 @@
 from app import db
 import re
-from sqlalchemy import and_, or_
+from sqlalchemy import or_
 from schema.users import Users
 
 def register(request):

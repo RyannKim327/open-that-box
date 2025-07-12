@@ -44,16 +44,17 @@ def sample_write():
     ))
 
     insert(Tasks(
-        task_id=1,
-        user_id=1
-    ))
-
-    insert(Tasks_Done(
         task_name="My Task",
         task_description="Eh eh...",
         task_points=0,
         task_by_group=False
     ))
+
+    insert(Tasks_Done(
+        task_id=1,
+        user_id=1
+    ))
+
 
     insert(Team_Achievements(
         role=1,
