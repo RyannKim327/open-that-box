@@ -1,7 +1,8 @@
-from app import db
 import re
-from sqlalchemy import and_, or_
+
+from app import db
 from schema.users import Users
+from sqlalchemy import and_, or_
 
 
 def register(request):
@@ -39,15 +40,15 @@ def register(request):
     for item in required_fields:
         # Reject the requests any of the input are empty
         if str(item).strip() == "":
-            return "[Request rejected]: Incomplete data"
+            return {"error": "[Request rejected]: Incomplete data"}
 
     # Email validation
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-        return "[Request rejected]: Invalid email"
+        return {"error": "[Request rejected]: Invalid email"}
 
     # Password match validation
     if not password == confirm_password:
-        return "[Request rejected]: Password does not match"
+        return {"error": "[Request rejected]: Password does not match"}
 
     # Existing username and email validation
     existing_email = db.session.scalar(
@@ -56,7 +57,7 @@ def register(request):
         )
     )
     if existing_email:
-        return "[Request rejected]: Username or email already exists"
+        return {"error": "[Request rejected]: Username or email already exists"}
 
     # Insert into database
     insert(
@@ -72,5 +73,4 @@ def register(request):
         )
     )
 
-    return "[Request accepted]: No error"
-
+    return {"message": "You may now login your account"}
