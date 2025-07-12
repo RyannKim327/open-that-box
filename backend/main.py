@@ -1,6 +1,5 @@
+import database
 from flask import Flask
-
-from backend import database
 
 app = Flask(__name__)
 db = database.db(app)
