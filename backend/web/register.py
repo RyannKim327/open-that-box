@@ -1,9 +1,9 @@
 from app import db
 import re
-from flask import request
-from ...backend.schema.users import Users
+from sqlalchemy import and_, or_
+from schema.users import Users
 
-def register():
+def register(request):
     def insert(content):
         try :
             db.session.add(content)
@@ -44,9 +44,14 @@ def register():
 
     # Password match validation
     if not password == confirm_password:
-        return "[Request rejected]: Password does not"
-    
-    # Inser into database
+        return "[Request rejected]: Password does not match"
+
+    # Existing username and email validation
+    existing_email = db.session.scalar(db.select(Users).where(or_(Users.user_username==username, Users.user_email==email)))
+    if existing_email:
+        return "[Request rejected]: Username or email already exists"
+
+    # Insert into database
     insert(Users(
         user_username = username, 
         user_first_name = first_name,
