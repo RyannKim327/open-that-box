@@ -1,4 +1,5 @@
-import re
+import base64
+import json
 
 from app import db
 from schema.users import Users
@@ -23,10 +24,15 @@ def login(request):
             )
         )
 
-        print(user)
+        # print(user.user_username)
         if user:
-            return "Meron ata"
+            return {
+                "id": user.user_id,
+                "usn": user.user_username,
+                "token": base64.b64decode(user.user_username),
+            }
+
         else:
-            return "Wala prii"
+            return {"error": "Invalid Credentials"}
     except Exception as e:
-        return str(e)
+        return {"error": "Err: " + str(e)}
