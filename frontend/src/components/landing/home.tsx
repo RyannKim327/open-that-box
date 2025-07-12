@@ -1,9 +1,22 @@
 import SplitText from "../animations/splitText";
+import Silk from '@/components/animations/silk';
 
 function Home() {
   return (
     <div id="home" className="home flex flex-col items-center justify-center h-screen overflow-x-hidden relative">
-      <div className="relative z-10 flex flex-col items-center justify-center">
+      {/* Silk Background */}
+      <div className="absolute inset-0 z-0">
+        <Silk
+          speed={5}
+          scale={1}
+          color="#7B7481"
+          noiseIntensity={1.5}
+          rotation={0}
+        />
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-white">
         <h1 className="text-2xl text-center">Welcome to</h1>
         <div className="text-4xl font-bold text-center mt-4">
           <SplitText

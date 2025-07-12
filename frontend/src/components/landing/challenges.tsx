@@ -2,9 +2,9 @@ export default function Challenges() {
   return (
     <div
       id="challenges"
-      className="challenges flex flex-col items-center justify-center min-h-screen w-full overflow-x-hidden px-4 py-16"
+      className="challenges flex flex-col items-center justify-center min-h-fit w-full overflow-x-hidden px-4 py-16 text-white bg-black"
     >
-      <div className="text-center mb-12 max-w-4xl">
+      <div className="text-center mb-12 max-w-4xl pt-40">
         <h1 className="text-4xl font-bold mb-4">Challenges</h1>
         <p className="text-lg max-w-2xl mx-auto">
           Explore our exciting challenges designed to test your skills and creativity.
@@ -14,7 +14,7 @@ export default function Challenges() {
 
       <div className="container w-full space-y-1">
         <div className="p-6 transition-shadow duration-300">
-          <div className="relative overflow-hidden rounded-xl">
+          <div className="relative overflow-hidden rounded-xl border">
             <img 
               src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
               alt="Featured Challenge - Web Development" 
