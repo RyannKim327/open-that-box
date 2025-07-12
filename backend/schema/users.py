@@ -13,6 +13,6 @@ class Users(db.Model):
     user_last_name = db.Column(db.String(200), nullable=False)
     user_email = db.Column(db.String(200), nullable=False, unique=True)
     user_password = db.Column(db.String(200), nullable=False)
-    user_role = db.Column(db.String(50), nullable=False)
-    user_badges = db.Column(db.String(), db.ForeignKey("tbl_roles.role_id"), nullable=False)
+    user_role = db.Column(db.String(50))
+    user_badges = db.Column(db.String(), db.ForeignKey("tbl_roles.role_id"))
     user_created_at = db.Column(db.DateTime, default=datetime.now())
