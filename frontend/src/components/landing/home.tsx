@@ -1,7 +1,8 @@
 function Home() {
   return (
-    <div className="home flex flex-col items-center justify-center h-full p-4">
-      <h1 className="text-4xl font-bold text-center mt-10">Welcome to Open That Box</h1>
+    <div id="home" className="home flex flex-col items-center justify-center h-screen">
+      <h1 className="text-2xl text-center mt-10">Welcome to</h1>
+      <h1 className="text-6xl font-extrabold text-center mt-4">Acude</h1>
       <p className="text-center mt-4">Your one-stop solution for all things box-related!</p>
     </div>
   );
