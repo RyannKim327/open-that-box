@@ -8,7 +8,7 @@ function Home() {
         <div className="text-4xl font-bold text-center mt-4">
           <SplitText
             text="Acude"
-            className="text-[300px] font-semibold text-center"
+            className="text-7xl font-semibold text-center sm:text-[300px] md:text-9xl"
             delay={100}
             duration={2}
             ease="power3.out"
