@@ -690,15 +690,21 @@ export default function Dashboard() {
                 <TabsList className="grid w-full grid-cols-2 bg-slate-100 mb-6">
                   <TabsTrigger
                     value="individual"
-                    className="text-slate-700 data-[state=active]:bg-white data-[state=active]:text-slate-900"
+                    className="text-slate-700 data-[state=active]:bg-white data-[state=active]:text-slate-900 flex flex-col items-center justify-center py-3 px-2 text-center"
                   >
-                    Individual Badges ({individualBadges.filter((b) => b.earned).length}/{individualBadges.length})
+                    <span className="font-medium">Individual</span>
+                    <span className="text-xs mt-1">
+                      Badges ({individualBadges.filter((b) => b.earned).length}/{individualBadges.length})
+                    </span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="team"
-                    className="text-slate-700 data-[state=active]:bg-white data-[state=active]:text-slate-900"
+                    className="text-slate-700 data-[state=active]:bg-white data-[state=active]:text-slate-900 flex flex-col items-center justify-center py-3 px-2 text-center"
                   >
-                    Team Badges ({teamBadges.filter((b) => b.earned).length}/{teamBadges.length})
+                    <span className="font-medium">Team</span>
+                    <span className="text-xs mt-1">
+                      Badges ({teamBadges.filter((b) => b.earned).length}/{teamBadges.length})
+                    </span>
                   </TabsTrigger>
                 </TabsList>
 

@@ -1,11 +1,10 @@
 import TiltedCard from '@/components/animations/tiltedCard';
 
-
 export default function Team() {
     return (
-        <div className='flex h-screen w-screen overflow-hidden items-center justify-center flex-col border'>
-            <h2 className='font-bold text-7xl'>Built By</h2>
-            <div className='flex h-[60vh] w-screen overflow-hidden items-center justify-center gap-16'>
+        <div className='flex min-h-[70vh] w-full overflow-hidden items-center justify-center flex-col py-8 px-4 sm:py-12 lg:py-16 text-white bg-black'>
+            <h2 className='font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8 sm:mb-12 text-center'>Built By</h2>
+            <div className='flex flex-col min-h-[50vh] w-full overflow-hidden items-center justify-center gap-8 sm:gap-12 md:gap-16 sm:flex-row'>
                 
                 <TiltedCard
                     imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
@@ -21,7 +20,7 @@ export default function Team() {
                     showTooltip={true}
                     displayOverlayContent={true}
                     overlayContent={
-                        <p className="tilted-card-demo-text bg-black/50 text-white p-2 rounded-lg">
+                        <p className="tilted-card-demo-text bg-black/50 text-white p-2 rounded-lg text-sm sm:text-base">
                             Jemson
                         </p>
                     }
@@ -40,7 +39,7 @@ export default function Team() {
                     showTooltip={true}
                     displayOverlayContent={true}
                     overlayContent={
-                        <p className="tilted-card-demo-text bg-black/50 text-white p-2 rounded-lg">
+                        <p className="tilted-card-demo-text bg-black/50 text-white p-2 rounded-lg text-sm sm:text-base">
                             Ryann
                         </p>
                     }
@@ -59,7 +58,7 @@ export default function Team() {
                     showTooltip={true}
                     displayOverlayContent={true}
                     overlayContent={
-                        <p className="tilted-card-demo-text bg-black/50 text-white p-2 rounded-lg">
+                        <p className="tilted-card-demo-text bg-black/50 text-white p-2 rounded-lg text-sm sm:text-base">
                             Khian
                         </p>
                     }
