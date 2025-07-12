@@ -48,10 +48,10 @@ function Header({ onLoginSuccess }: { onLoginSuccess: () => void }) {
                         </li>
                         <li>
                             <a 
-                                href="#courses"
-                                onClick={e => handleSmoothScroll(e, "courses")}
+                                href="#challenges"
+                                onClick={e => handleSmoothScroll(e, "challenges")}
                             >
-                                Courses
+                                Challenges
                             </a>
                         </li>
                         <li>
@@ -96,15 +96,8 @@ function Header({ onLoginSuccess }: { onLoginSuccess: () => void }) {
                 </div>
                 {showLogin && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-                        <div className="bg-white rounded-lg shadow-lg p-6 relative max-w-md w-full mx-auto my-8">
-                            <Button
-                                className="absolute top-2 right-2 text-gray-500 hover:text-black"
-                                onClick={() => setShowLogin(false)}
-                                variant="ghost"
-                                size="sm"
-                            >
-                                ✕
-                            </Button>
+                        <div className="rounded-lg p-6 mx-auto my-8">
+                           
                             <LoginPage onLoginSuccess={handleLoginSuccess} />
                         </div>
                     </div>
