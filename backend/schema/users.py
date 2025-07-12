@@ -1,5 +1,14 @@
-from app import app, db
 from datetime import datetime
+
+from app import app, db
+
+# from database import db
+
+
+def setApp(myapp):
+    global app
+    app = myapp
+
 
 class Users(db.Model):
     # Table for Users
@@ -10,5 +19,5 @@ class Users(db.Model):
     middle_name = db.Column(db.String(200), nullable=False)
     last_name = db.Column(db.String(200), nullable=False)
     role = db.Column(db.String(50), nullable=False)
-    badges = db.Column(db.String(50))
+    badges = db.Column(db.String(), default="")
     created_at = db.Column(db.DateTime, default=datetime.now())
