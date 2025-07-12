@@ -40,6 +40,17 @@ import {
   DialogClose,
   DialogFooter,
 } from "@/components/ui/dialog"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import {
   Pagination,
@@ -52,7 +63,7 @@ import {
 } from "@/components/ui/pagination"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
-import { Award, Hash, Trophy } from "lucide-react"
+import { Award, Hash, Trophy, LogOut } from "lucide-react"
 import { useState } from "react"
 
 const topPlayers = [
@@ -605,8 +616,30 @@ export default function Dashboard() {
                   </DialogContent>
                 </Dialog>
               </div>
+              <AlertDialog>
+                <AlertDialogTrigger>
+                  <Button size="lg" variant={"destructive"}>
+                  <LogOut  className="w-4 h-4 mr-2" />
+                  Logout
+                </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone. 
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction className="bg-red-500 hover:bg-red-400">Continue</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+              
             </div>
           </div>
+          
 
           <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-40 sm:mt-20">
             <Card className="shadow-md border-slate-200">
@@ -690,21 +723,15 @@ export default function Dashboard() {
                 <TabsList className="grid w-full grid-cols-2 bg-slate-100 mb-6">
                   <TabsTrigger
                     value="individual"
-                    className="text-slate-700 data-[state=active]:bg-white data-[state=active]:text-slate-900 flex flex-col items-center justify-center py-3 px-2 text-center"
+                    className="text-slate-700 data-[state=active]:bg-white data-[state=active]:text-slate-900 sm:text-sm md:text-md text-xs"
                   >
-                    <span className="font-medium">Individual</span>
-                    <span className="text-xs mt-1">
-                      Badges ({individualBadges.filter((b) => b.earned).length}/{individualBadges.length})
-                    </span>
+                    Individual Badges ({individualBadges.filter((b) => b.earned).length}/{individualBadges.length})
                   </TabsTrigger>
                   <TabsTrigger
                     value="team"
-                    className="text-slate-700 data-[state=active]:bg-white data-[state=active]:text-slate-900 flex flex-col items-center justify-center py-3 px-2 text-center"
+                    className="text-slate-700 data-[state=active]:bg-white data-[state=active]:text-slate-900 sm:text-sm md:text-md text-xs"
                   >
-                    <span className="font-medium">Team</span>
-                    <span className="text-xs mt-1">
-                      Badges ({teamBadges.filter((b) => b.earned).length}/{teamBadges.length})
-                    </span>
+                    Team Badges ({teamBadges.filter((b) => b.earned).length}/{teamBadges.length})
                   </TabsTrigger>
                 </TabsList>
 

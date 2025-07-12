@@ -4,7 +4,6 @@ import Silk from '@/components/animations/silk';
 function Home() {
   return (
     <div id="home" className="home flex flex-col items-center justify-center h-screen overflow-x-hidden relative">
-      {/* Silk Background */}
       <div className="absolute inset-0 z-0">
         <Silk
           speed={5}
@@ -15,7 +14,6 @@ function Home() {
         />
       </div>
       
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-white">
         <h1 className="text-2xl text-center">Welcome to</h1>
         <div className="text-4xl font-bold text-center mt-4">
@@ -33,8 +31,9 @@ function Home() {
             textAlign="center"
           />
         </div>
-        <p className="text-center mt-4">Your one-stop solution for all things box-related!</p>
+        <p className="text-center mt-4">Your stepping stone to your destiny.</p>
       </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
     </div>
   );
 }

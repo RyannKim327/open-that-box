@@ -6,6 +6,7 @@ import Dashboard from './pages/dashboard/dashboard';
 import Challenges from './components/landing/challenges';
 import Contest from './components/landing/contest';
 import Team from './components/landing/team';
+import CircularText from './components/animations/circularText';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,7 +31,7 @@ function App() {
               </div>
             </div>
           }
-        />
+        />        
       </Routes>
     </Router>
   );
