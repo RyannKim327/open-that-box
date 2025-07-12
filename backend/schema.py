@@ -1,5 +1,11 @@
 from datetime import datetime
+
 from database import db
+
+
+def setApp(myapp):
+    global app
+    app = myapp
 
 class Users(db.Model):
     __tablename__ = "users"
@@ -12,3 +18,6 @@ class Users(db.Model):
     role = db.Column(db.String(50), nullable=False)
     badges = db.Column(db.String(), default="")
     created_at = db.Column(db.DateTime, default=datetime.now())
+
+    def create(self):
+        
