@@ -49,6 +49,18 @@ def index():
 def top_contribs():
     return top_contributor(request)
 
+@app.route("/user", methods=["POST"])
+def get_user():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    if username == "khian" and password == "123":
+        print("Access Granted")
+    else:
+        print("Invalid username or password")
+
+    return ""
 
 if __name__ == "__main__":
     with app.app_context():
