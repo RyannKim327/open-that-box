@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button } from "../ui/button";
 import LoginPage from "@/pages/login-page";
 import Dashboard from "@/pages/dashboard/dashboard";
+import { Button } from "../ui/button";
 
 function Header() {
     const [showLogin, setShowLogin] = useState(false);
@@ -30,14 +30,12 @@ function Header() {
                     </nav>
                     <div className="flex items-center ml-8 justify-center">
                         <Button
-                            className="ml-2 bg-[#f4f4f5] hover:bg-gray-700 text-black font-bold py-2 px-4 rounded mr-2"
-                            variant={"outline"}
                             onClick={openLoginDialog}
+                            variant={"outline"}
                         >
                             Login
                         </Button>
                         <Button
-                            className="text-black py-2 px-4 rounded bg-zinc-950"
                             onClick={openLoginDialog}
                         >
                             Create Account
@@ -47,13 +45,13 @@ function Header() {
                 {showLogin && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                         <div className="bg-white rounded-lg shadow-lg p-6 relative">
-                            <button
+                            <Button
                                 className="absolute top-2 right-2 text-gray-500 hover:text-black"
                                 onClick={() => setShowLogin(false)}
                                 aria-label="Close"
                             >
                                 &times;
-                            </button>
+                            </Button>
                             <LoginPage onLoginSuccess={() => {
                                 setShowLogin(false);
                                 setLoggedIn(true);
