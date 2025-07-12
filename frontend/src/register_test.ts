@@ -8,9 +8,9 @@ import { post } from "./utils/access.ts";
     first_name: "f",
     middle_name: "s",
     last_name: "f",
-    email: "f",
+    email: "mafks@gmail.com",
     password: "g",
-    confirm_password: ""
+    confirm_password: "saf"
   };
   const response = await post(endpoint, data);
   console.log(JSON.stringify(response));
