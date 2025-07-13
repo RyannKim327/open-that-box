@@ -8,6 +8,7 @@ def register(request):
         try :
             db.session.add(content)
             db.session.commit()
+            return "Done"
         except Exception as error:
             return f"Unable to insert: {error}"
 
@@ -25,7 +26,6 @@ def register(request):
     required_fields = [
         username,
         first_name,
-        middle_name,
         last_name,
         email,
         password,
@@ -36,31 +36,35 @@ def register(request):
     for item in required_fields:
         # Reject the requests any of the input are empty
         if str(item).strip() == "":
-            return "[Request rejected]: Incomplete data"
+            return {"error": "[Request rejected]: Incomplete data"}
         
     # Email validation
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-        return "[Request rejected]: Invalid email"
+        return {"error": "[Request rejected]: Invalid email"}
 
     # Password match validation
     if not password == confirm_password:
-        return "[Request rejected]: Password does not match"
+        return {"error": "[Request rejected]: Password does not match"}
 
     # Existing username and email validation
     existing_email = db.session.scalar(db.select(Users).where(or_(Users.user_username==username, Users.user_email==email)))
     if existing_email:
-        return "[Request rejected]: Username or email already exists"
+        return {"error": "[Request rejected]: Username or email already exists"}
 
     # Insert into database
-    insert(Users(
-        user_username = username, 
-        user_first_name = first_name,
-        user_middle_name = middle_name,
-        user_last_name = last_name,
-        user_email = email,
-        user_password = password,
-        user_role = "",
-        user_badges = ""
-    ))
-            
-    return "[Request accepted]: No error"
+    ins = insert(
+        Users(
+            user_username=username,
+            user_first_name=first_name,
+            user_middle_name=middle_name,
+            user_last_name=last_name,
+            user_email=email,
+            user_password=password,
+            user_role=role,
+            user_badges="",
+        )
+    )
+
+    print(ins)
+
+    return {"message": "You may now login your account"}

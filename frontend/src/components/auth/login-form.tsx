@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { post } from "@/utils/access"
 
 export default function LoginForm({
   className,
@@ -13,12 +14,16 @@ export default function LoginForm({
   const [password, setPassword] = useState("")
 
   const send_login = async () => {
-    console.log("Login attempt:", { username, password })
-      if (username && password) {
+    const response = await post("/login", {
+      username, password
+    })
+    
+    if (!response.error) {
       alert("Login successful!")
+      localStorage.setItem("token", JSON.stringify(response))
       onLoginSuccess?.()
-    } else {
-      alert("Please fill in all fields")
+    } else if(response.error){
+      alert(response.error)
     }
   }
 

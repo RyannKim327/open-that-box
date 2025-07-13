@@ -29,7 +29,10 @@ def login(request):
             return {
                 "id": user.user_id,
                 "usn": user.user_username,
-                "token": base64.b64decode(user.user_username),
+                "token": user.user_username,
+                "first_name": user.user_first_name,
+                "middle_name": user.user_middle_name,
+                "last_name": user.user_last_name,
             }
 
         else:
