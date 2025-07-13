@@ -1,13 +1,11 @@
-import re
-
 from app import db
+import re
+from sqlalchemy import or_
 from schema.users import Users
-from sqlalchemy import and_, or_
-
 
 def register(request):
     def insert(content):
-        try:
+        try :
             db.session.add(content)
             db.session.commit()
             return "Done"
@@ -15,14 +13,13 @@ def register(request):
             return f"Unable to insert: {error}"
 
     data = request.get_json()
-
+        
     # Get user input and perform validation
     username = data.get("username")
     first_name = data.get("first_name")
     middle_name = data.get("middle_name")
     last_name = data.get("last_name")
     email = data.get("email")
-    role = data.get("role")
     password = data.get("password")
     confirm_password = data.get("confirm_password")
 
@@ -32,7 +29,7 @@ def register(request):
         last_name,
         email,
         password,
-        confirm_password,
+        confirm_password
     ]
 
     # Validate for empty input
@@ -40,7 +37,7 @@ def register(request):
         # Reject the requests any of the input are empty
         if str(item).strip() == "":
             return {"error": "[Request rejected]: Incomplete data"}
-
+        
     # Email validation
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
         return {"error": "[Request rejected]: Invalid email"}
@@ -50,11 +47,7 @@ def register(request):
         return {"error": "[Request rejected]: Password does not match"}
 
     # Existing username and email validation
-    existing_email = db.session.scalar(
-        db.select(Users).where(
-            or_(Users.user_username == username, Users.user_email == email)
-        )
-    )
+    existing_email = db.session.scalar(db.select(Users).where(or_(Users.user_username==username, Users.user_email==email)))
     if existing_email:
         return {"error": "[Request rejected]: Username or email already exists"}
 
@@ -67,7 +60,7 @@ def register(request):
             user_last_name=last_name,
             user_email=email,
             user_password=password,
-            user_role=role,
+            user_role="",
             user_badges="",
         )
     )
