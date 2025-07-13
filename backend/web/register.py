@@ -60,7 +60,7 @@ def register(request):
             user_last_name=last_name,
             user_email=email,
             user_password=password,
-            user_role=role,
+            user_role="",
             user_badges="",
         )
     )
