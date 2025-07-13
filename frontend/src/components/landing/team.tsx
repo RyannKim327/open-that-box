@@ -3,7 +3,7 @@ import Beams from '../animations/beam';
 
 export default function Team() {
     return (
-        <div className='flex min-h-[70vh] w-full overflow-hidden items-center justify-center flex-col py-8 px-4 sm:py-12 lg:py-16 relative'>
+        <div id="team" className='flex min-h-[70vh] w-full overflow-hidden items-center justify-center flex-col py-8 px-4 sm:py-12 lg:py-16 relative'>
             <h2 className='font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8 sm:mb-8 text-center z-20 mix-blend-difference text-white'>Built by</h2>
             <div className="absolute inset-0 z-0">
             <Beams

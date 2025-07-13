@@ -342,7 +342,7 @@ export default function Dashboard() {
 
   const handleTabChange = (tab: string) => {
     setBadgeTab(tab)
-    setCurrentPage(1) // Reset to first page when switching tabs
+    setCurrentPage(1)
   }
 
   return (

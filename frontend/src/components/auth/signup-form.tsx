@@ -378,7 +378,7 @@ export function SignupForm({
           </form>
           <div ref={imageRef} className="bg-muted relative hidden md:block">
             <img
-              src="/placeholder.svg"
+              src="https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg"
               alt="Image"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />

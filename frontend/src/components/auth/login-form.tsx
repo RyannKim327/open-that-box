@@ -32,7 +32,7 @@ export default function LoginForm({
   }
 
   return (
-    <div className={`flex flex-col gap-4 sm:gap-6 w-full max-w-6xl mx-auto p-4 ${className}`} {...props}>
+    <div className={`flex flex-col gap-4 sm:gap-6 w-full max-w-6xl mx-auto ${className}`} {...props}>
       <Card className="overflow-hidden">
         <CardContent className="grid p-0 lg:grid-cols-2">
           <div className="p-4 sm:p-6 lg:p-8">
@@ -62,7 +62,7 @@ export default function LoginForm({
                     <Label htmlFor="password" className="text-sm">Password</Label>
                     <a
                       href="#"
-                      className="ml-auto text-xs sm:text-sm underline-offset-2 hover:underline transition-colors"
+                      className="ml-auto text-xs sm:text-xs underline-offset-2 hover:underline transition-colors"
                     >
                       Forgot your password?
                     </a>
@@ -149,7 +149,11 @@ export default function LoginForm({
           </div>
           <div className="bg-muted relative hidden lg:block">
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-64 h-64 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-20"></div>
+              <img
+                src="https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg"
+                alt="Image"
+                className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+              />
             </div>
           </div>
         </CardContent>
