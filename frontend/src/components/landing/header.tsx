@@ -54,15 +54,7 @@ function Header({ onLoginSuccess }: { onLoginSuccess: () => void }) {
                                     Home
                                 </a>
                             </li>
-                            <li>
-                                <a 
-                                    href="#leaderboard" 
-                                    className="hover:text-gray-600"
-                                    onClick={e => handleSmoothScroll(e, "leaderboard")}
-                                >
-                                    Leaderboards
-                                </a>
-                            </li>
+                            
                             <li>
                                 <a 
                                     href="#challenges"
@@ -79,6 +71,15 @@ function Header({ onLoginSuccess }: { onLoginSuccess: () => void }) {
                                     onClick={e => handleSmoothScroll(e, "contest")}
                                 >
                                     Contest
+                                </a>
+                            </li>
+                            <li>
+                                <a 
+                                    href="#contest"
+                                    className="hover:text-gray-600"
+                                    onClick={e => handleSmoothScroll(e, "team")}
+                                >
+                                    Team
                                 </a>
                             </li>
                         </ul>
