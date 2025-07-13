@@ -10,6 +10,7 @@ def register(request):
         try:
             db.session.add(content)
             db.session.commit()
+            return "Done"
         except Exception as error:
             return f"Unable to insert: {error}"
 
@@ -28,10 +29,8 @@ def register(request):
     required_fields = [
         username,
         first_name,
-        middle_name,
         last_name,
         email,
-        role,
         password,
         confirm_password,
     ]
@@ -60,7 +59,7 @@ def register(request):
         return {"error": "[Request rejected]: Username or email already exists"}
 
     # Insert into database
-    insert(
+    ins = insert(
         Users(
             user_username=username,
             user_first_name=first_name,
@@ -72,5 +71,7 @@ def register(request):
             user_badges="",
         )
     )
+
+    print(ins)
 
     return {"message": "You may now login your account"}

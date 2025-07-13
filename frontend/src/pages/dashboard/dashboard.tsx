@@ -64,7 +64,7 @@ import {
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Award, Hash, Trophy, LogOut } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const topPlayers = [
   { name: "Jemson", points: 99999, level: 75, achievements: 5 },
@@ -301,6 +301,12 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1)
   const [copiedBadge, setCopiedBadge] = useState<string | null>(null)
 
+  const [userData, setUserData] = useState({})
+
+  useEffect(() => {
+    setUserData(JSON.parse(localStorage.getItem("token") ?? "{}"))
+  }, [localStorage.getItem("token")])
+
   const itemsPerPage = 8
   const currentUser = "Jemson"
   const currentTeam = "Code Warriors"
@@ -372,7 +378,7 @@ export default function Dashboard() {
               </div>
               <div className="flex-1">
                 <div className="flex flex-col justify-center">
-                  <h2 className="text-3xl font-bold text-black">Jemson</h2>
+                  <h2 className="text-3xl font-bold text-black">{userData.first_name} {userData.middle_name ?? ""} {userData.last_name}</h2>
                 </div>
                 <div className="mt-2 flex gap-5">
                   <p className="text-slate-600 font-medium">Senior Developer</p>
@@ -535,7 +541,7 @@ export default function Dashboard() {
                                   <div>
                                     <div className="flex items-center gap-2">
                                       <h4 className="font-medium">{member.name}</h4>
-                                      {member.name === currentUser && <IconCrown className="w-4 h-4 text-yellow-500" />}
+                                      {member.name === userData.usn && <IconCrown className="w-4 h-4 text-yellow-500" />}
                                       <div
                                         className={`w-2 h-2 rounded-full ${member.status === "active" ? "bg-green-500" : "bg-slate-400"}`}
                                       ></div>
@@ -548,7 +554,7 @@ export default function Dashboard() {
                                     <p className="text-sm font-medium">Level {member.level}</p>
                                     <p className="text-xs text-slate-600">{member.points.toLocaleString()} pts</p>
                                   </div>
-                                  {member.name === currentUser ? (
+                                  {member.name === userData.usn ? (
                                     <Badge variant="outline" className="border-yellow-500 text-yellow-600">
                                       You
                                     </Badge>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import { cn } from "@/lib/utils"
 import { Card, CardContent } from "@/components/ui/card"
@@ -20,13 +20,14 @@ export function SignupForm({
   const imageRef = useRef<HTMLDivElement>(null)
   const termsRef = useRef<HTMLDivElement>(null)
 
-  const [signUpData, setSignUpData] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    password: "",
-    confirm_password: ""
-  })
+  const [firstName, setFirstName] = useState("")
+  const [middleName, setMiddleName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
+  
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -112,7 +113,16 @@ export function SignupForm({
   }, [])
 
   const send_signup = async () => {
-    const response = await post("/register", signUpData)
+    const response = await post("/register", {
+        first_name: firstName,
+        middle_name: middleName,
+        last_name: lastName,
+        email: email,
+        password: password,
+        confirm_password: confirmPassword,
+        username: username,
+        role: 1
+    })
 
     if (response.error) {
       alert(response.error)
@@ -163,6 +173,7 @@ export function SignupForm({
       repeat: 1,
       ease: "power2.inOut",
       onComplete: () => {
+        send_signup()
         onSignUpSuccess?.()
       }
     })
@@ -196,7 +207,20 @@ export function SignupForm({
                       onFocus={handleInputFocus}
                       onBlur={handleInputBlur}
                       onChange={(e) => {
-                        setSignUpData(prev => prev.first_name = e.target.value)
+                        setFirstName(e.target.value)
+                      }}
+                    />
+                  </div>
+                  <div className="grid gap-3">
+                    <Label htmlFor="middleNamw">Middle Name</Label>
+                    <Input
+                      id="middleName"
+                      type="text"
+                      placeholder="Nought"
+                      onFocus={handleInputFocus}
+                      onBlur={handleInputBlur}
+                      onChange={(e) => {
+                        setMiddleName(e.target.value)
                       }}
                     />
                   </div>
@@ -210,12 +234,26 @@ export function SignupForm({
                       onFocus={handleInputFocus}
                       onBlur={handleInputBlur}
                       onChange={(e) => {
-                        setSignUpData(prev => prev.last_name = e.target.value)
+                        setLastName(e.target.value)
                       }}
                     />
                   </div>
                 </div>
 
+                <div className="grid gap-3">
+                  <Label htmlFor="username">Username</Label>
+                  <Input
+                    id="username"
+                    type="text"
+                    placeholder="johndoe"
+                    required
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
+                    onChange={(e) => {
+                        setUsername(e.target.value)
+                    }}
+                  />
+                </div>
                 <div className="grid gap-3">
                   <Label htmlFor="email">Email</Label>
                   <Input
@@ -226,7 +264,7 @@ export function SignupForm({
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                     onChange={(e) => {
-                      setSignUpData(prev => prev.email = e.target.value)
+                        setEmail(e.target.value)
                     }}
                   />
                 </div>
@@ -241,7 +279,7 @@ export function SignupForm({
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                     onChange={(e) => {
-                      setSignUpData(prev => prev.password = e.target.value)
+                        setPassword(e.target.value)
                     }}
                   />
                 </div>
@@ -256,7 +294,7 @@ export function SignupForm({
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                     onChange={(e) => {
-                      setSignUpData(prev => prev.confirm_password = e.target.value)
+                        setConfirmPassword(e.target.value)
                     }}
                   />
                 </div>
